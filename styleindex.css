@@ -1,0 +1,281 @@
+/* Biến màu sắc để dễ quản lý */
+:root {
+    --primary-color: #FFB72B;
+    --bg-light: #F9FFE2;
+    --text-dark: #333;
+    --white: #ffffff;
+    --red-btn: #FF5B5B;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--white);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/*Banner*/
+.hero{
+    max-width: 1000px;
+    margin: 10px auto;
+    padding: 0 15px;    
+}
+
+.hero img{
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    display: block;
+}
+
+/* Header Styles */
+.top-bar {
+    background-color: var(--white);
+    padding: 5px 50px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    border-bottom: 1px solid #eee;
+}
+
+.mid-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    height:80px; 
+    flex-wrap: wrap;
+}
+.logo img {
+    height: 50px;
+    width: auto;
+} 
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background: #E8F5C8;
+    border-radius: 20px;
+    padding: 5px 15px;
+    width: 300px;
+}
+
+.search-bar input {
+    border: none;
+    background: transparent;
+    width: 100%;
+    outline: none;
+    font-size: 14px;
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    border: none;
+    background: #E8F5C8;
+    border-radius: 0 25px 25px 0;
+    cursor: pointer;
+}
+
+.btn-login{
+    background: white;
+    padding: 8px 14px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 10px;
+    white-space: nowrap;
+}
+
+.btn-register {
+    background: var(--primary-color);
+    padding: 8px 14px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: bold;
+    font-size: 12px;
+    margin-left: 10px;
+    white-space: nowrap;
+}
+
+/* Nav Styles */
+.main-nav {
+    background-color: var(--primary-color);
+}
+
+.nav-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+}
+
+.main-nav ul li a {
+    display: block;
+    padding: 15px 25px;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: bold;
+}
+
+.section-title{
+    text-align: center;
+    margin: 40px 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-title h2{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.section-title::before,
+.section-title::after {
+    content: "";
+    flex: 1;
+    border-bottom: 4px solid #cdcdcd; 
+}
+
+.category-list {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.cat-item img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+/* Product Cards */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+.product-card {
+    background: #E8F5C8;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.product-card:hover { transform: translateY(-5px); }
+
+.product-card img { width: 100%; height: 200px; object-fit: cover; }
+
+.product-info { padding: 20px; }
+
+.product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.price { font-weight: bold; font-size: 18px; }
+
+.add-btn {
+    background: var(--red-btn);
+    color: white;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/* Footer */
+footer{
+    background-color: #FFB72B;  
+    padding: 40px 0 20px;
+    margin-top: 0;
+}
+/* 1. Dàn hàng ngang cho footer */
+.footer-content {
+    display: flex;        
+    justify-content: space-between; 
+    align-items: flex-start;  
+    padding: 40px 0;      
+    max-width: 1200px; 
+    margin: 0 auto;  
+}
+
+/* 2. Thu nhỏ logo trong footer */
+.footer-logo img {
+    width: 100px; 
+    height: auto;
+    margin-top: -30px;
+    display: block;
+    margin-left: 30px;
+}
+
+/* 3. Định dạng văn bản cho các cột */
+.footer-logo p, .footer-contact p, .footer-hours p {
+    font-size: 12px;      
+    line-height: 1.8;
+    color: #333; 
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+.footer-contact h4, .footer-hours h4 {
+    margin-bottom: 20px;       /* Khoảng cách dưới tiêu đề Liên hệ/Giờ mở cửa */
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* 4. Định dạng icon (vị trí, điện thoại, mail) */
+.footer-contact i {
+    width: 20px;               /* Cố định độ rộng icon để chữ thẳng hàng */
+    margin-right: 10px;
+    color: #333;
+}
+
+.copyright {
+    text-align: center;
+    padding: 15px;
+    background: rgba(0,0,0,0.1);
+}
+
+.social-icons img {
+    width: 24px;   /* Độ rộng nhỏ lại */
+    height: 24px;  /* Chiều cao tương ứng */
+    margin-left: 10px;
+    object-fit: contain;
+}
+
+.cart-icon img {
+    width: 30px; 
+    height: auto;
+}
+
+

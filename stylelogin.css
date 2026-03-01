@@ -1,0 +1,97 @@
+/*Login Style*/
+.login-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 0;
+    background-color: #fff;
+}
+
+.login-box{
+    background-color: #E8F5C8;
+    padding: 40px;
+    border-radius: 40px;
+    text-align: center;
+    max-width: 450px;
+    width: 100%;
+}
+
+.login-box {
+    background-color: #E8F5C8;
+    width: 100%;
+    max-width: 450px;
+    padding: 40px;
+    border-radius: 40px;
+    text-align: center;
+}
+
+.login-logo img {
+    width: 80px;
+    height: auto;
+    background: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.login-box h2 {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 30px;
+    color: #000;
+}
+
+/* Căn lề Input */
+.form-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 8px;
+    margin-left: 10px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    outline: none;
+    background-color: #fff;
+}
+
+/* Nút Đăng nhập */
+.btn-submit-login {
+    width: 100%;
+    background-color: #FFB72B;
+    color: #000;
+    border: none;
+    padding: 15px;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.btn-submit-login:hover {
+    background-color: #ffa500;
+}
+
+/* Dòng Đăng ký ngay */
+.forgot-pass {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.forgot-pass a {
+    color: #FF4D6D;
+    text-decoration: none;
+    font-weight: bold;
+}

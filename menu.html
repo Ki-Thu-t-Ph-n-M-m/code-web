@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Mục Sản Phẩm</title>
+    <meta name="keywords" content="Ăn là ghiền, Mua là mê, Đồ ăn ngon, Đồ ăn vặt, Đồ ăn nhanh, Food, Order đồ ăn">
+    <meta name="description" content="Danh mục món ăn đa dạng và hấp dẫn tại Ăn là ghiền - Mua là mê, nơi bạn có thể tìm thấy những món ăn ngon và phù hợp với khẩu vị của mình.">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styleindex.css">
+    <link rel="stylesheet" href="stylemenu.css">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <span>Ăn là ghiền - Mua là mê</span>
+            <div class="social-icons">
+                <a href="#"><img src="image/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="image/instagram.png" alt="Instagram"></a>
+                <a href="#"><img src="image/twitter.png" alt="Twitter"></a>
+            </div>
+        </div>
+
+        <div class = "mid-header container">
+            <div class = "logo">
+                <a href = "image/Fauget.png" alt="Fauget Logo"></a>
+            </div>
+            <div class = "search-bar">
+                <input type="text" placeholder="Tìm kiếm...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div>
+                <a href="login.html" class="btn-login">Đăng nhập</a>
+                <a href="register.html" class="btn-register">Đăng ký</a>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <div class="container nav-flex">
+                <ul>
+                    <li><a href="index.html" class="active">Trang chủ</a></li>
+                    <li><a href="menu.html">MENU</a></li>
+                    <li><a href="combo.html">COMBO</a></li>
+                    <li><a href="about.html">GIỚI THIỆU</a></li>
+                    <li><a href="contact.html">LIÊN HỆ</a></li>
+                </ul>
+                <div class="cart-icon">
+                    <a href="cart.html"><img src="image/cart.png" alt="Giỏ hàng"><i class ="fas fa-shopping-cart"></i></a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+            <!-- Filter -->
+    <div class="container">
+        <div class="filter-container">
+            <button class="filter-btn active">Tất cả</button>
+            <button class="filter-btn"><i class="fas fa-hamburger"></i> Burger</button>
+            <button class="filter-btn"><i class="fas fa-pizza-slice"></i> Pizza</button>
+            <button class="filter-btn"><i class="fas fa-drumstick-bite"></i> Gà rán</button>
+            <button class="filter-btn"><i class="fas fa-glass-martini-alt"></i> Đồ uống</button>
+            <button class="filter-btn"><i class="fas fa-cookie"></i> Đồ ăn vặt</button>
+        </div>
+    </div>
+
+    <!-- Sản Phẩm -->
+    <section class="menu container">
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="image/cheeseburger.png" alt="Cheese Burger">
+                <div class ="product-info">
+                    <h3>Cheese Burger</h3>
+                    <p>Burger phô mai kép với thịt bò juicy và hành phi giòn</p>
+                    <div class="product-footer">
+                        <span class="price">60.000đ</span>
+                        <button class="add-btn">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="image/classicburger.png" alt="Classic Burger"></a>
+                <div class="product-info">
+                    <h3>Classic Burger</h3>
+                    <p>Burger bò Úc với phô mai cheddar, rau xà lách tươi, cà chua và sốt đặc biệt</p>
+                    <div class="product-footer">
+                        <span class="price">55.000đ</span>
+                        <button class="add-btn">+</button>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="product-card">
+                <img src="image/chickenburger.png" alt="Chicken Burger">
+                <div class="product-info">
+                    <h3>Chicken Burger</h3>
+                    <p>Burger gà giòn với sốt mayo tự làm và rau xà lách tươi</p>
+                    <div class="product-footer">
+                        <span class="price">50.000đ</span>
+                        <button class="add-btn">+</button>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="product-card">
+                <img src="image/pepperonipizza.png" alt="Pepperoni Pizza">
+                <div class="product-info">
+                    <h3>Pepperoni Pizza</h3>
+                    <p>Pizza pepperoni truyền thống với phô mai mozzarella</p>
+                    <div class="product-footer">
+                        <span class="price">120.000đ</span>
+                        <button class="add-btn">+</button>
+                    </div>
+                </div>  
+            </div>
+
+            <div class="product-card">
+                <img src="image/hawaianpizza.png" alt="Hawaiian Pizza">
+                <div class="product-info">
+                    <h3>Hawaiian Pizza</h3>
+                    <p>Pizza thơm dứa với giăm bông và phô mai</p>
+                    <div class="product-footer">
+                        <span class="price">110.000đ</span>
+                        <button class="add-btn">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="image/veggiepizza.png" alt="Veggie Pizza">
+                <div class="product-info">
+                    <h3>Veggie Pizza</h3>
+                    <p>Pizza rau củ với ớt chuông, nấm và olive</p>
+                    <div class="product-footer">
+                        <span class="price">100.000đ</span>
+                        <button class="add-btn">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="image/ga2.png" alt="Gà rán (2 miếng)"></a>
+                <div class="product-info">
+                    <h3>Gà rán (2 miếng)</h3>
+                    <p>2 miếng gà rán giòn vàng thơm ngon</p>
+                    <div class="product-footer">
+                        <span class="price">45.000đ</span>
+                        <button class="add-btn">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="image/ga4.png" alt="Gà rán (4 miếng)"></a>
+                <div class="product-info">
+                    <h3>Gà rán (4 miếng)</h3>
+                    <p>Bốn miếng gà rán, perfect để share</p>
+                    <div class="product-footer">
+                        <span class="price">85.000đ</span>
+                        <button class="add-btn">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="image/wingbbq.png" alt="Wings BBQ (8 miếng)"></a>
+                <div class="product-info">
+                    <h3>Wings BBQ (8 miếng)</h3>
+                    <p>Cánh gà nướng BBQ vị đậm đà</p>
+                    <div class="product-footer">
+                        <span class="price">60.000đ</span>
+                        <button class="add-btn">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="image/cocacola.png" alt="Coca Cola">
+                <div class="product-info">
+                    <h3>Coca Cola</h3>
+                    <p>Coca Cola lon mát lạnh</p>
+                    <div class="product-footer">
+                        <span class="price">20.000đ</span>
+                        <button class="add-btn">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="image/pepsi.png" alt="Pepsi">
+                <div class="product-info">
+                    <h3>Pepsi</h3>
+                    <p>Pepsi lon mát lạnh</p>
+                    <div class="product-footer">
+                        <span class="price">20.000đ</span>
+                        <button class="add-btn">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="image/tradao.png" alt="Trà đào">
+                <div class="product-info">
+                    <h3>Trà đào</h3>
+                    <p>Trà đào cam sả thơm mát</p>
+                    <div class="product-footer">
+                        <span class="price">35.000đ</span>
+                        <button class="add-btn">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="image/khoaitaychien.png" alt="Khoai tây chiên">
+                <div class="product-info">
+                    <h3>Khoai tây chiên</h3>
+                    <p>Khoai tây chiên giòn rụm</p>
+                    <div class="product-footer">
+                        <span class="price">30.000đ</span>
+                        <button class="add-btn">+</button>
+                    </div>
+                </div>  
+            </div>
+
+            <div class="product-card">
+                <img src="image/onionring.png" alt="Hành tây chiên">
+                <div class="product-info">
+                    <h3>Hành tây chiên</h3>
+                    <p>Hành tây chiên giòn vàng</p>
+                    <div class="product-footer">
+                        <span class="price">35.000đ</span>
+                        <button class="add-btn">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="image/salad.png" alt="Salad Ceasar">
+                <div class="product-info">
+                    <h3>Salad Ceasar</h3>
+                    <p>Salad Ceasar tươi ngon bổ dưỡng</p>
+                    <div class="product-footer">
+                        <span class="price">40.000đ</span>
+                        <button class="add-btn">+</button>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </section>
+
+<footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <img src="image/Fauget.png" alt="Fauget Logo">
+                <p>Đồ ăn nhanh chất lượng, giao hàng tận nơi.</p>
+            </div>
+            <div class="footer-contact">
+                <h4>
+                    Liên hệ
+                </h4>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Đường ABC, Hà Đông, TP.Hà Nội</p>
+                <p><i class="fas fa-phone"></i> 0123 456 789</p>
+                <p><i class="fas fa-envelope"></i> hello@fastfood.com</p>
+            </div>
+            <div class="footer-hours">
+                <h4>Giờ mở cửa</h4>
+                <p>Thứ Hai - Chủ Nhật</p>
+                <p>9:00 - 22:00</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

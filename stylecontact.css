@@ -1,0 +1,10 @@
+.only-section{
+    padding: 10px;
+}
+.only-section img{
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 10000px;
+    object-fit: cover;
+}

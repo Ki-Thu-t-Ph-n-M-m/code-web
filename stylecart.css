@@ -1,0 +1,136 @@
+.cart-title{
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    margin: 16px;
+}
+
+.cart-list{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.cart-item{
+    display: flex;
+    align-items: center;
+    gap:12px;
+    background-color: #e8ecf8;
+    border-radius: 14px;
+    padding: 12px;
+}
+
+.cart-item img{
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.item-info{
+    flex:1;
+}
+
+.item-name{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.item-price{
+    font-size: 14px;
+    color:darkorange;
+    font-weight: bold;
+}
+
+.item-quantity{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.quantity-btn{
+    background-color: white;
+    color: var(--text-dark);
+    border: solid 1px white;
+    padding: 6px 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px ;
+}
+
+.quantity-btn:hover{
+    background-color: var(--primary-color);
+    color: white;
+    border: solid 1px var(--primary-color);
+}
+
+.quantity-value{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.remove-btn {
+      background: none;
+      border: none;
+      font-size: 40px;
+      cursor: pointer;
+      color: black;
+      margin-left: 8px;
+    }
+
+.summary{
+    background-color:#f0fbf1;
+    border-radius: 14px;
+    padding: 16px;
+}
+
+.summary-row{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 16px;
+}
+
+.summary-row{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.summary-row span:last-child{
+    font-weight: bold;
+}
+
+.summary-row.total{
+    font-weight: bold;
+    font-size: 20px;
+    border-top: dashed 1px #bbb;
+    padding-top: 10px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.checkout-btn{
+    display: block;
+    width: 90%;
+    margin: 16px auto 0; /* cái này để căn ra giữa*/
+    margin-top: 16px;
+    margin-bottom: 16px;
+    padding: 15px;
+    background-color: #f4a015;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.checkout-btn:hover{
+    background-color: rgb(248, 183, 104);
+}
+

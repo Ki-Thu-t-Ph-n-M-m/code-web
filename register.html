@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký</title>
+    <meta name="keywords" content="Ăn là ghiền, Mua là mê, Đồ ăn ngon, Đồ ăn vặt, Đồ ăn nhanh, Food, Order đồ ăn, Đăng ký">
+    <meta name="description" content="Đăng ký vào tài khoản của bạn tại Ăn là ghiền - Mua là mê để trải nghiệm dịch vụ đặt đồ ăn nhanh chóng và tiện lợi.">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylelogin.css">
+    <link rel="stylesheet" href="styleindex.css">
+</head>
+<body>
+    <!--Header trên đầu-->
+    <header>
+        <div class="top-bar">
+            <span>Ăn là ghiền - Mua là mê</span>
+            <div class="social-icons">
+                <a href="#"><img src="image/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="image/instagram.png" alt="Instagram"></a>
+                <a href="#"><img src="image/twitter.png" alt="Twitter"></a>
+            </div>
+        </div>
+
+        <div class = "mid-header container">
+            <div class = "logo">
+                <a href = "image/Fauget.png" alt="Fauget Logo"></a>
+            </div>
+            <div class = "search-bar">
+                <input type="text" placeholder="Tìm kiếm...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div>
+                <a href="login.html" class="btn-login">Đăng nhập</a>
+                <a href="register.html" class="btn-register">Đăng ký</a>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <div class="container nav-flex">
+                <ul>
+                    <li><a href="index.html" class="active">Trang chủ</a></li>
+                    <li><a href="menu.html">MENU</a></li>
+                    <li><a href="combo.html">COMBO</a></li>
+                    <li><a href="about.html">GIỚI THIỆU</a></li>
+                    <li><a href="contact.html">LIÊN HỆ</a></li>
+                </ul>
+                <div class="cart-icon">
+                    <a href="cart.html"><img src="image/cart.png" alt="Giỏ hàng"><i class ="fas fa-shopping-cart"></i></a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="login-section">
+        <div class="login-box">
+            <div class="login-logo">
+                <img src="image/Fauget.png" alt="Logo">
+            </div>
+            <h2>ĐĂNG NHẬP</h2>
+            
+            <form>
+                <div class="form-group">
+                    <label>HỌ VÀ TÊN</label>
+                    <input type="text" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>EMAIL</label>
+                    <input type="password" required>
+                </div>
+
+                <div class="form-group">
+                    <label>SỐ ĐIỆN THOẠI</label>
+                    <input type="text" required>
+                </div>
+
+                <div class="form-group">
+                    <label>MẬT KHẨU</label>
+                    <input type="password" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>NHẬP LẠI MẬT KHẨU</label>
+                    <input type="password" required>
+                </div>  
+
+                <button type="submit" class="btn-submit-login">ĐĂNG KÝ</button>
+            </form>
+            
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <img src="image/Fauget.png" alt="Fauget Logo">
+                <p>Đồ ăn nhanh chất lượng, giao hàng tận nơi.</p>
+            </div>
+            <div class="footer-contact">
+                <h4>
+                    Liên hệ
+                </h4>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Đường ABC, Hà Đông, TP.Hà Nội</p>
+                <p><i class="fas fa-phone"></i> 0123 456 789</p>
+                <p><i class="fas fa-envelope"></i> hello@fastfood.com</p>
+            </div>
+            <div class="footer-hours">
+                <h4>Giờ mở cửa</h4>
+                <p>Thứ Hai - Chủ Nhật</p>
+                <p>9:00 - 22:00</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

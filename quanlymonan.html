@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styleindex.css">
+    <link rel="stylesheet" href="quanlymonan.css">
+    <link rel="stylesheet" href="header-footer.css">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <span>Ăn là ghiền - Mua là mê</span>
+            <div class="social-icons">
+                <a href="#"><img src="image/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="image/instagram.png" alt="Instagram"></a>
+                <a href="#"><img src="image/twitter.png" alt="Twitter"></a>
+            </div>
+        </div>
+
+        <div class = "logo-container">
+            <div class = "admin-logo">
+                <a href ="index.html"><img src="image/Fauget.png" alt="Fauget Logo"></a>
+            </div>
+
+            <div class="admin-container">
+                <div class="icon-user">
+                    <img src="image2/administrator.png" alt="Hello">
+                </div>
+                <span>Xin chào</span>
+            </div>
+        </div>
+        
+        
+        <nav class="main-nav">
+            <div class="container nav-flex">
+                <ul>
+                    <li><a href="tongquan.html" class="active">TỔNG QUAN</a></li>
+                    <li><a href="quanlydonhang.html">QUẢN LÝ ĐƠN HÀNG</a></li>
+                    <li><a href="quanlymonan.html">QUẢN LÝ MÓN ĂN</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+
+
+    <div class="title-donhang">
+        <div class="title-icon"><img src="image2/schedule.png" alt="Qlma"></div>
+        <h2>QUẢN LÝ MÓN ĂN</h2>
+    </div>
+
+    <div class="timkiem">
+        <div class = "search-donhang">
+            <input type="text" placeholder="Tìm kiếm món ăn...">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+
+        <div class="filter-order filter-wrapper">
+            <button class="filter-btn" onclick="toggleFilter()">
+                Lọc theo
+            </button>
+            <div class="filter-dropdown" id="filterDropdown">
+                <label><input type="checkbox"> Hình ảnh </label>
+                <label><input type="checkbox"> Tên món</label>
+                <label><input type="checkbox"> Giá bán</label>
+                <label><input type="checkbox"> Tình trạng</label>
+                <label><input type="checkbox"> Thao tác</label>
+            </div>
+        </div>
+    </div>
+    
+
+    <script>
+        function toggleFilter() {
+            const dropdown = document.getElementById('filterDropdown');
+            dropdown.classList.toggle('show');
+        }
+
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.filter-wrapper')) {
+                document.getElementById('filterDropdown').classList.remove('show');
+            }
+        });
+    </script>
+
+    <table>
+        <thead>
+            <tr> 
+                <th>Hình ảnh</th>
+                <th>Tên món</th>
+                <th>Giá bán</th>
+                <th>Tình trạng</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody id="foodTable"></tbody>
+    </table>
+
+
+
+    <script>
+        var foods = JSON.parse(localStorage.getItem('foods') || '[]');
+
+    if (foods.length === 0) {
+        foods = [
+            { img: "image/classicburger.png",  name: "Classic Burger",    price: "55.000đ", status: "Còn hàng" },
+            { img: "image/ga4.png",  name: "Gà Rán (4 miếng)", price: "85.000đ", status: "Hết hàng" },
+            { img: "image/cocacola.png",name: "Coca Cola",          price: "20.000đ", status: "Còn hàng" }
+        ];
+    }
+
+    function renderFoods() {
+        var tbody = document.getElementById('foodTable');
+        tbody.innerHTML = '';
+
+        if (foods.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="5" class="empty-msg">Chưa có món ăn</td></tr>';
+            return;
+        }
+
+        foods.forEach(function(food, index) {
+            var badgeClass = food.status === 'Còn hàng' ? 'badge-ship' : 'badge-done';
+            tbody.innerHTML +=
+                '<tr>' +
+                '<td><img src="' + food.img + '" class="food-img"></td>' +
+                '<td>' + food.name + '</td>' +
+                '<td>' + food.price + '</td>' +
+                '<td><span class="badge ' + badgeClass + '">' + food.status + '</span></td>' +
+                '<td>' +
+                    '<button class="btn btn-view" onclick="suaMon(' + index + ')">Sửa</button>' +
+                    '<button class="btn btn-update" onclick="xoaMon(' + index + ')">Xóa</button>' +
+                '</td>' +
+                '</tr>';
+        });
+    }
+
+    function suaMon(index) {
+        window.location.href = 'addfood.html?index=' + index;
+    }
+
+    function xoaMon(index) {
+        if (confirm('Bạn có chắc muốn xóa món này không?')) {
+            foods.splice(index, 1);
+            localStorage.setItem('foods', JSON.stringify(foods));
+            renderFoods();
+        }
+    }
+
+    renderFoods();
+    </script>
+
+
+
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <img src="image/Fauget.png" alt="Fauget Logo">
+                <p>Đồ ăn nhanh chất lượng, giao hàng tận nơi.</p>
+            </div>
+            <div class="footer-contact">
+                <h4>
+                    Liên hệ
+                </h4>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Đường ABC, Hà Đông, TP.Hà Nội</p>
+                <p><i class="fas fa-phone"></i> 0123 456 789</p>
+                <p><i class="fas fa-envelope"></i> hello@fastfood.com</p>
+            </div>
+            <div class="footer-hours">
+                <h4>Giờ mở cửa</h4>
+                <p>Thứ Hai - Chủ Nhật</p>
+                <p>9:00 - 22:00</p>
+            </div>
+        </div>
+    </footer>
+    
+</body>
+</html>

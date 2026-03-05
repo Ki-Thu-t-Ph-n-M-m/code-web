@@ -1,0 +1,86 @@
+.top-bar {
+    background-color: var(--white);
+    padding: 5px 50px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    border-bottom: 1px solid #eee;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+}
+
+.main-nav ul li a {
+    display: block;
+    padding: 15px 25px;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: bold;
+}
+
+
+footer{
+    background-color: #FFB72B;  
+    padding: 40px 0 20px;
+    margin-top: 0;
+}
+/* 1. Dàn hàng ngang cho footer */
+.footer-content {
+    display: flex;        
+    justify-content: space-between; 
+    align-items: flex-start;  
+    padding: 40px 0;      
+    max-width: 1200px; 
+    margin: 0 auto;  
+}
+
+/* 2. Thu nhỏ logo trong footer */
+.footer-logo img {
+    width: 100px; 
+    height: auto;
+    margin-top: -30px;
+    display: block;
+    margin-left: 30px;
+}
+
+/* 3. Định dạng văn bản cho các cột */
+.footer-logo p, .footer-contact p, .footer-hours p {
+    font-size: 12px;      
+    line-height: 1.8;
+    color: #333; 
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+.footer-contact h4, .footer-hours h4 {
+    margin-bottom: 20px;       /* Khoảng cách dưới tiêu đề Liên hệ/Giờ mở cửa */
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* 4. Định dạng icon (vị trí, điện thoại, mail) */
+.footer-contact i {
+    width: 20px;               /* Cố định độ rộng icon để chữ thẳng hàng */
+    margin-right: 10px;
+    color: #333;
+}
+
+.copyright {
+    text-align: center;
+    padding: 15px;
+    background: rgba(0,0,0,0.1);
+}
+
+.social-icons img {
+    width: 24px;   /* Độ rộng nhỏ lại */
+    height: 24px;  /* Chiều cao tương ứng */
+    margin-left: 10px;
+    object-fit: contain;
+}
+
+.cart-icon img {
+    width: 30px; 
+    height: auto;
+}

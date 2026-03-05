@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styleindex.css">
+    <link rel="stylesheet" href="quanlydonhang.css">
+    <link rel="stylesheet" href="header-footer.css"
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <span>Ăn là ghiền - Mua là mê</span>
+            <div class="social-icons">
+                <a href="#"><img src="image/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="image/instagram.png" alt="Instagram"></a>
+                <a href="#"><img src="image/twitter.png" alt="Twitter"></a>
+            </div>
+        </div>
+
+        <div class = "logo-container">
+            <div class = "admin-logo">
+                <a href ="index.html"><img src="image/Fauget.png" alt="Fauget Logo"></a>
+            </div>
+
+            <div class="admin-container">
+                <div class="icon-user">
+                    <img src="image2/administrator.png" alt="Hello">
+                </div>
+                <span>Xin chào</span>
+            </div>
+        </div>
+        
+        
+        <nav class="main-nav">
+            <div class="container nav-flex">
+                <ul>
+                    <li><a href="tongquan.html" class="active">TỔNG QUAN</a></li>
+                    <li><a href="quanlydonhang.html">QUẢN LÝ ĐƠN HÀNG</a></li>
+                    <li><a href="quanlymonan.html">QUẢN LÝ MÓN ĂN</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+
+
+    <div class="title-donhang">
+        <div class="title-icon"><img src="image2/schedule.png" alt="Qldh"></div>
+        <h2>QUẢN LÝ ĐƠN HÀNG</h2>
+    </div>
+
+    <div class="timkiem">
+        <div class = "search-donhang">
+            <input type="text" placeholder="Tìm kiếm món ăn...">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+
+        <div class="filter-order filter-wrapper">
+            <button class="filter-btn" onclick="toggleFilter()">
+                Lọc theo
+            </button>
+            <div class="filter-dropdown" id="filterDropdown">
+                <label><input type="checkbox"> Mã đơn hàng</label>
+                <label><input type="checkbox"> Tên khách hàng</label>
+                <label><input type="checkbox"> SĐT</label>
+                <label><input type="checkbox"> Tổng tiền</label>
+                <label><input type="checkbox"> Trạng thái</label>
+                <label><input type="checkbox"> Hành động</label>
+            </div>
+        </div>
+    </div>
+    
+
+    <script>
+        function toggleFilter() {
+            const dropdown = document.getElementById('filterDropdown');
+            dropdown.classList.toggle('show');
+        }
+
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.filter-wrapper')) {
+                document.getElementById('filterDropdown').classList.remove('show');
+            }
+        });
+    </script>
+
+    <table>
+        <thead>
+            <tr> 
+                <th>Mã đơn hàng</th>
+                <th>Khách hàng</th>
+                <th>SĐT</th>
+                <th>Tổng tiền</th>
+                <th>Trạng thái</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody id="ordertable"></tbody>
+    </table>
+
+    <script>
+        var orders = JSON.parse(localStorage.getItem('orders') || '[]');
+        var tbody = document.getElementById('ordertable');
+        if (orders.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="6" class="empty-msg">Chưa có đơn hàng</td></tr>';
+        } else {
+            orders.forEach(function(order, index) {
+                var badgeClass = 'badge-wait';
+                if (order.status === 'Dang giao') badgeClass = 'badge-ship';
+                if (order.status === 'Hoan thanh') badgeClass = 'badge-done';
+                var btn = '<button class="btn btn-view">Xem</button>';
+                if (order.status !== 'Hoan thanh') {
+                    btn += '<button class="btn btn-update" onclick="updateStatus(' + index + ')">Cap nhat</button>';
+                }
+                tbody.innerHTML += '<tr><td>' + order.id + '</td><td>' + order.name + '</td><td>' + order.phone + '</td><td>' + order.total + '</td><td><span class="badge ' + badgeClass + '">' + order.status + '</span></td><td>' + btn + '</td></tr>';
+            });
+        }
+        function updateStatus(index) {
+            var orders = JSON.parse(localStorage.getItem('orders') || '[]');
+            if (orders[index].status === 'Cho xu ly') orders[index].status = 'Dang giao';
+            else if (orders[index].status === 'Dang giao') orders[index].status = 'Hoan thanh';
+            localStorage.setItem('orders', JSON.stringify(orders));
+            location.reload();
+        }
+    </script>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <img src="image/Fauget.png" alt="Fauget Logo">
+                <p>Đồ ăn nhanh chất lượng, giao hàng tận nơi.</p>
+            </div>
+            <div class="footer-contact">
+                <h4>
+                    Liên hệ
+                </h4>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Đường ABC, Hà Đông, TP.Hà Nội</p>
+                <p><i class="fas fa-phone"></i> 0123 456 789</p>
+                <p><i class="fas fa-envelope"></i> hello@fastfood.com</p>
+            </div>
+            <div class="footer-hours">
+                <h4>Giờ mở cửa</h4>
+                <p>Thứ Hai - Chủ Nhật</p>
+                <p>9:00 - 22:00</p>
+            </div>
+        </div>
+    </footer>
+    
+</body>
+</html>

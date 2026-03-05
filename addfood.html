@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <title>Document</title>
+        <link rel="stylesheet" href="styleindex.css">
+    <link rel="stylesheet" href="addfood.css">
+    <link rel="stylesheet" href="header-footer.css">
+    <link rel="stylesheet" href="quanlymonan.css">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <span>Ăn là ghiền - Mua là mê</span>
+            <div class="social-icons">
+                <a href="#"><img src="image/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="image/instagram.png" alt="Instagram"></a>
+                <a href="#"><img src="image/twitter.png" alt="Twitter"></a>
+            </div>
+        </div>
+
+        <div class = "logo-container">
+            <div class = "admin-logo">
+                <a href ="index.html"><img src="image/Fauget.png" alt="Fauget Logo"></a>
+            </div>
+
+            <div class="admin-container">
+                <div class="icon-user">
+                    <img src="image2/administrator.png" alt="Hello">
+                </div>
+                <span>Xin chào</span>
+            </div>
+        </div>
+        
+        
+        <nav class="main-nav">
+            <div class="container nav-flex">
+                <ul>
+                    <li><a href="tongquan.html" class="active">TỔNG QUAN</a></li>
+                    <li><a href="quanlydonhang.html">QUẢN LÝ ĐƠN HÀNG</a></li>
+                    <li><a href="quanlymonan.html">QUẢN LÝ MÓN ĂN</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="addfood-title">
+        <img src="image2/schedule.png" alt="title">
+        <h2>THÊM/SỬA MÓN ĂN</h2>
+    </div>
+
+        <div class="popup-form">
+
+            <div class="form-group">
+                <label>TÊN MÓN ĂN</label>
+                <input type="text" id="tenMon" placeholder="">
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>DANH MỤC</label>
+                    <input type="text" id="danhMuc" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label>GIÁ BÁN</label>
+                    <input type="text" id="giaBan" placeholder="">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>MÔ TẢ MÓN ĂN</label>
+                <input type="text" id="moTa" placeholder="">
+            </div>
+
+            <div class="form-group">
+                <label>HÌNH ẢNH ĐẠI DIỆN</label>
+                <div class="upload-row">
+                    <label class="btn-chon-file">
+                        CHỌN
+                        <input type="file" id="hinhAnh" accept="image/*" hidden>
+                    </label>
+                    <span id="fileName">bấm để tải ảnh lên...</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>TRẠNG THÁI</label>
+                <div class="status-row">
+                    <label class="status-option">
+                        <input type="radio" name="trangThai" value="Còn hàng">
+                        <span class="status-btn green">CHỌN</span>
+                        Đang bán
+                    </label>
+                    <label class="status-option">
+                        <input type="radio" name="trangThai" value="Hết hàng">
+                        <span class="status-btn red">CHỌN</span>
+                        Ngưng bán
+                    </label>
+                </div>
+            </div>
+
+            <div class="popup-actions">
+                <button class="btn-huy" onclick="dongPopup()">HỦY BỎ</button>
+                <button class="btn-luu" onclick="luuMonAn()">LƯU DỮ LIỆU</button>
+            </div>
+
+        </div>
+
+<script>
+    function moPopup() {
+        document.getElementById('popupOverlay').classList.add('show');
+    }
+
+    function dongPopup() {
+        document.getElementById('popupOverlay').classList.remove('show');
+    }
+
+    // Hien ten file khi chon anh
+    document.getElementById('hinhAnh').addEventListener('change', function() {
+        var fileName = this.files[0] ? this.files[0].name : 'bam de tai anh len...';
+        document.getElementById('fileName').textContent = fileName;
+    });
+
+    function luuMonAn() {
+        var ten    = document.getElementById('tenMon').value.trim();
+        var gia    = document.getElementById('giaBan').value.trim();
+        var status = document.querySelector('input[name="trangThai"]:checked');
+
+        if (!ten || !gia || !status) {
+            alert('Vui long dien day du thong tin!');
+            return;
+        }
+
+        var foods = JSON.parse(localStorage.getItem('foods') || '[]');
+        foods.push({
+            img: 'image/default.jpg',
+            name: ten,
+            price: gia,
+            status: status.value
+        });
+        localStorage.setItem('foods', JSON.stringify(foods));
+        dongPopup();
+        location.reload();
+    }
+</script>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <img src="image/Fauget.png" alt="Fauget Logo">
+                <p>Đồ ăn nhanh chất lượng, giao hàng tận nơi.</p>
+            </div>
+            <div class="footer-contact">
+                <h4>
+                    Liên hệ
+                </h4>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Đường ABC, Hà Đông, TP.Hà Nội</p>
+                <p><i class="fas fa-phone"></i> 0123 456 789</p>
+                <p><i class="fas fa-envelope"></i> hello@fastfood.com</p>
+            </div>
+            <div class="footer-hours">
+                <h4>Giờ mở cửa</h4>
+                <p>Thứ Hai - Chủ Nhật</p>
+                <p>9:00 - 22:00</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

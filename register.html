@@ -111,5 +111,45 @@
             </div>
         </div>
     </footer>
+
+<script>
+
+const form = document.querySelector("form");
+
+form.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    const name = form.querySelectorAll("input")[0].value;
+    const email = form.querySelectorAll("input")[1].value;
+    const phone = form.querySelectorAll("input")[2].value;
+    const pass = form.querySelectorAll("input")[3].value;
+    const repass = form.querySelectorAll("input")[4].value;
+
+    if(pass !== repass){
+        alert("Mật khẩu nhập lại không đúng!");
+        return;
+    }
+
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    users.push({
+        name:name,
+        email:email,
+        phone:phone,
+        password:pass
+    });
+
+    localStorage.setItem("users",JSON.stringify(users));
+
+    alert("Đăng ký thành công!");
+
+    window.location.href="login.html";
+
+});
+
+</script>
+
+    
 </body>
 </html>

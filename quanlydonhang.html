@@ -100,32 +100,6 @@
         <tbody id="ordertable"></tbody>
     </table>
 
-    <script>
-        var orders = JSON.parse(localStorage.getItem('orders') || '[]');
-        var tbody = document.getElementById('ordertable');
-        if (orders.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="6" class="empty-msg">Chưa có đơn hàng</td></tr>';
-        } else {
-            orders.forEach(function(order, index) {
-                var badgeClass = 'badge-wait';
-                if (order.status === 'Dang giao') badgeClass = 'badge-ship';
-                if (order.status === 'Hoan thanh') badgeClass = 'badge-done';
-                var btn = '<button class="btn btn-view">Xem</button>';
-                if (order.status !== 'Hoan thanh') {
-                    btn += '<button class="btn btn-update" onclick="updateStatus(' + index + ')">Cap nhat</button>';
-                }
-                tbody.innerHTML += '<tr><td>' + order.id + '</td><td>' + order.name + '</td><td>' + order.phone + '</td><td>' + order.total + '</td><td><span class="badge ' + badgeClass + '">' + order.status + '</span></td><td>' + btn + '</td></tr>';
-            });
-        }
-        function updateStatus(index) {
-            var orders = JSON.parse(localStorage.getItem('orders') || '[]');
-            if (orders[index].status === 'Cho xu ly') orders[index].status = 'Dang giao';
-            else if (orders[index].status === 'Dang giao') orders[index].status = 'Hoan thanh';
-            localStorage.setItem('orders', JSON.stringify(orders));
-            location.reload();
-        }
-    </script>
-
     <footer>
         <div class="container footer-content">
             <div class="footer-logo">
@@ -147,6 +121,133 @@
             </div>
         </div>
     </footer>
+
+     <script>
+
+// ===== TẠO DỮ LIỆU MẪU =====
+if (!localStorage.getItem('orders')) {
+
+    const sampleOrders = [
+        { id:'DH001', name:'Nguyễn Văn A', phone:'0901234567', total:'170.000đ', status:'Cho xu ly' },
+        { id:'DH002', name:'Trần Thị B', phone:'0988777666', total:'65.000đ', status:'Dang giao' },
+        { id:'DH003', name:'Lê Văn C', phone:'0333444555', total:'120.000đ', status:'Hoan thanh' }
+    ];
+
+    localStorage.setItem('orders', JSON.stringify(sampleOrders));
+}
+
+
+// ===== HIỂN THỊ ĐƠN HÀNG =====
+function renderOrders(searchText=""){
+
+    const orders = JSON.parse(localStorage.getItem("orders")) || [];
+    const tbody = document.getElementById("ordertable");
+
+    tbody.innerHTML="";
+
+    const filtered = orders.filter(order =>
+        order.name.toLowerCase().includes(searchText.toLowerCase()) ||
+        order.id.toLowerCase().includes(searchText.toLowerCase())
+    );
+
+    if(filtered.length===0){
+        tbody.innerHTML="<tr><td colspan='6'>Không có đơn hàng</td></tr>";
+        return;
+    }
+
+    filtered.forEach((order,index)=>{
+
+        let statusText="Chờ xử lý";
+        let badge="badge-wait";
+
+        if(order.status==="Dang giao"){
+            statusText="Đang giao";
+            badge="badge-ship";
+        }
+
+        if(order.status==="Hoan thanh"){
+            statusText="Hoàn thành";
+            badge="badge-done";
+        }
+
+        let action=`
+        <button onclick="viewOrder('${order.id}')">Xem</button>
+        `;
+
+        if(order.status!=="Hoan thanh"){
+            action+=`<button onclick="updateStatus(${index})">Cập nhật</button>`;
+        }
+
+        tbody.innerHTML+=`
+        <tr>
+            <td>${order.id}</td>
+            <td>${order.name}</td>
+            <td>${order.phone}</td>
+            <td>${order.total}</td>
+            <td><span class="${badge}">${statusText}</span></td>
+            <td>${action}</td>
+        </tr>
+        `;
+    });
+
+}
+
+
+// ===== XEM ĐƠN =====
+function viewOrder(id){
+    alert("Chi tiết đơn hàng: "+id);
+}
+
+
+// ===== CẬP NHẬT TRẠNG THÁI =====
+function updateStatus(index){
+
+    let orders = JSON.parse(localStorage.getItem("orders"));
+
+    if(orders[index].status==="Cho xu ly"){
+        orders[index].status="Dang giao";
+    }
+    else if(orders[index].status==="Dang giao"){
+        orders[index].status="Hoan thanh";
+    }
+
+    localStorage.setItem("orders",JSON.stringify(orders));
+
+    renderOrders();
+}
+
+
+// ===== TÌM KIẾM =====
+const searchInput=document.querySelector(".search-donhang input");
+const searchBtn=document.querySelector(".search-donhang button");
+
+searchBtn.onclick=()=>renderOrders(searchInput.value);
+
+searchInput.addEventListener("keyup",function(e){
+    if(e.key==="Enter"){
+        renderOrders(searchInput.value);
+    }
+});
+
+
+// ===== DROPDOWN FILTER =====
+function toggleFilter(){
+    document.getElementById("filterDropdown").classList.toggle("show");
+}
+
+window.onclick=function(e){
+
+    if(!e.target.closest(".filter-wrapper")){
+        document.getElementById("filterDropdown").classList.remove("show");
+    }
+
+}
+
+
+// ===== LOAD PAGE =====
+renderOrders();
+
+</script>
     
 </body>
 </html>

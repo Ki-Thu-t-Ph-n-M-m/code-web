@@ -140,5 +140,88 @@
             </div>
         </div>
     </footer>
+
+<script>
+
+/* LẤY GIỎ HÀNG */
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+/* CHUYỂN GIÁ */
+function parsePrice(price){
+    return parseInt(price.replace(/\D/g,""));
+}
+
+/* HIỂN THỊ GIỎ HÀNG */
+function renderCart(){
+
+    const cartList = document.querySelector(".cart-list");
+    cartList.innerHTML = "";
+
+    let total = 0;
+
+    cart.forEach((item,index)=>{
+
+        let price = parsePrice(item.price);
+        total += price * item.quantity;
+
+        cartList.innerHTML += `
+        <div class="cart-item">
+            <img src="${item.img}" alt="">
+            <div class="cart-item-details">
+                <div class="item-name">${item.name}</div>
+                <div class="item-price">${item.price}</div>
+            </div>
+
+            <div class="item-quantity">
+                <button onclick="giam(${index})">-</button>
+                <span class="quantity-value">${item.quantity}</span>
+                <button onclick="tang(${index})">+</button>
+            </div>
+
+            <button class="remove-btn" onclick="xoa(${index})">🗑</button>
+        </div>
+        `;
+    });
+
+    let totalText = total.toLocaleString("vi-VN") + "đ";
+
+    document.querySelector(".text-orange").innerText = totalText;
+}
+
+/* TĂNG */
+function tang(index){
+    cart[index].quantity++;
+    saveCart();
+}
+
+/* GIẢM */
+function giam(index){
+
+    if(cart[index].quantity > 1){
+        cart[index].quantity--;
+    }else{
+        cart.splice(index,1);
+    }
+
+    saveCart();
+}
+
+/* XÓA */
+function xoa(index){
+    cart.splice(index,1);
+    saveCart();
+}
+
+/* LƯU */
+function saveCart(){
+    localStorage.setItem("cart",JSON.stringify(cart));
+    renderCart();
+}
+
+/* LOAD */
+renderCart();
+
+</script>
+    
 </body>
 </html>

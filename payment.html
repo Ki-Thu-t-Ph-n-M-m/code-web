@@ -104,9 +104,6 @@
         <button class="checkout-btn">Đặt hàng</button>
     </a>
 
-
-
-
     <footer>
         <div class="container footer-content">
             <div class="footer-logo">
@@ -128,5 +125,33 @@
             </div>
         </div>
     </footer>
+
+<script>
+function placeOrder(){
+
+    const name = document.querySelector('input[type="text"]').value;
+    const phone = document.querySelectorAll('input[type="text"]')[1].value;
+    const address = document.querySelectorAll('input[type="text"]')[2].value;
+
+    const payment = document.querySelector('input[name="payment"]:checked');
+
+    if(name === "" || phone === "" || address === ""){
+        alert("Vui lòng điền đầy đủ thông tin!");
+        return false;
+    }
+
+    if(!payment){
+        alert("Vui lòng chọn phương thức thanh toán!");
+        return false;
+    }
+
+    alert("Đặt hàng thành công! Cảm ơn bạn.");
+    
+    localStorage.removeItem("cart");
+
+    window.location.href="finished-payment.html";
+}
+</script>
+    
 </body>
 </html>

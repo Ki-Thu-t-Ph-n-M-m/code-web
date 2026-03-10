@@ -107,44 +107,6 @@
 
         </div>
 
-<script>
-    function moPopup() {
-        document.getElementById('popupOverlay').classList.add('show');
-    }
-
-    function dongPopup() {
-        document.getElementById('popupOverlay').classList.remove('show');
-    }
-
-    // Hien ten file khi chon anh
-    document.getElementById('hinhAnh').addEventListener('change', function() {
-        var fileName = this.files[0] ? this.files[0].name : 'bam de tai anh len...';
-        document.getElementById('fileName').textContent = fileName;
-    });
-
-    function luuMonAn() {
-        var ten    = document.getElementById('tenMon').value.trim();
-        var gia    = document.getElementById('giaBan').value.trim();
-        var status = document.querySelector('input[name="trangThai"]:checked');
-
-        if (!ten || !gia || !status) {
-            alert('Vui long dien day du thong tin!');
-            return;
-        }
-
-        var foods = JSON.parse(localStorage.getItem('foods') || '[]');
-        foods.push({
-            img: 'image/default.jpg',
-            name: ten,
-            price: gia,
-            status: status.value
-        });
-        localStorage.setItem('foods', JSON.stringify(foods));
-        dongPopup();
-        location.reload();
-    }
-</script>
-
     <footer>
         <div class="container footer-content">
             <div class="footer-logo">
@@ -166,5 +128,89 @@
             </div>
         </div>
     </footer>
+
+<script>
+
+let editIndex = null;
+
+/* HIỂN THỊ TÊN FILE ẢNH */
+document.getElementById('hinhAnh').addEventListener('change', function () {
+    var file = this.files[0];
+
+    if (file) {
+        document.getElementById('fileName').textContent = file.name;
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            document.getElementById('fileName').dataset.img = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    } else {
+        document.getElementById('fileName').textContent = 'bấm để tải ảnh lên...';
+    }
+});
+
+
+/* KIỂM TRA CHẾ ĐỘ SỬA */
+const params = new URLSearchParams(window.location.search);
+const index = params.get("index");
+
+if (index !== null) {
+
+    let foods = JSON.parse(localStorage.getItem('foods') || '[]');
+    let food = foods[index];
+
+    if (food) {
+        document.getElementById('tenMon').value = food.name;
+        document.getElementById('giaBan').value = food.price;
+
+        document.querySelectorAll('input[name="trangThai"]').forEach(radio=>{
+            if(radio.value === food.status){
+                radio.checked = true;
+            }
+        });
+
+        editIndex = index;
+    }
+}
+
+
+/* LƯU MÓN ĂN */
+function luuMonAn() {
+
+    var ten = document.getElementById('tenMon').value.trim();
+    var gia = document.getElementById('giaBan').value.trim();
+    var status = document.querySelector('input[name="trangThai"]:checked');
+    var img = document.getElementById('fileName').dataset.img || 'image/default.jpg';
+
+    if (!ten || !gia || !status) {
+        alert('Vui lòng điền đầy đủ thông tin!');
+        return;
+    }
+
+    var foods = JSON.parse(localStorage.getItem('foods') || '[]');
+
+    var foodData = {
+        img: img,
+        name: ten,
+        price: gia,
+        status: status.value
+    };
+
+    if (editIndex !== null) {
+        foods[editIndex] = foodData;
+    } else {
+        foods.push(foodData);
+    }
+
+    localStorage.setItem('foods', JSON.stringify(foods));
+
+    alert("Lưu món ăn thành công!");
+
+    window.location.href = "quanlymonan.html";
+}
+
+</script>
+    
 </body>
 </html>

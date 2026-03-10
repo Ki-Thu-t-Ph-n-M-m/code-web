@@ -98,9 +98,29 @@
         <tbody id="foodTable"></tbody>
     </table>
 
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <img src="image/Fauget.png" alt="Fauget Logo">
+                <p>Đồ ăn nhanh chất lượng, giao hàng tận nơi.</p>
+            </div>
+            <div class="footer-contact">
+                <h4>
+                    Liên hệ
+                </h4>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Đường ABC, Hà Đông, TP.Hà Nội</p>
+                <p><i class="fas fa-phone"></i> 0123 456 789</p>
+                <p><i class="fas fa-envelope"></i> hello@fastfood.com</p>
+            </div>
+            <div class="footer-hours">
+                <h4>Giờ mở cửa</h4>
+                <p>Thứ Hai - Chủ Nhật</p>
+                <p>9:00 - 22:00</p>
+            </div>
+        </div>
+    </footer>
 
-
-    <script>
+        <script>
         var foods = JSON.parse(localStorage.getItem('foods') || '[]');
 
     if (foods.length === 0) {
@@ -150,31 +170,6 @@
 
     renderFoods();
     </script>
-
-
-
-
-    <footer>
-        <div class="container footer-content">
-            <div class="footer-logo">
-                <img src="image/Fauget.png" alt="Fauget Logo">
-                <p>Đồ ăn nhanh chất lượng, giao hàng tận nơi.</p>
-            </div>
-            <div class="footer-contact">
-                <h4>
-                    Liên hệ
-                </h4>
-                <p><i class="fas fa-map-marker-alt"></i> 123 Đường ABC, Hà Đông, TP.Hà Nội</p>
-                <p><i class="fas fa-phone"></i> 0123 456 789</p>
-                <p><i class="fas fa-envelope"></i> hello@fastfood.com</p>
-            </div>
-            <div class="footer-hours">
-                <h4>Giờ mở cửa</h4>
-                <p>Thứ Hai - Chủ Nhật</p>
-                <p>9:00 - 22:00</p>
-            </div>
-        </div>
-    </footer>
     
 </body>
 </html>
